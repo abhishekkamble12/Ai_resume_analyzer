@@ -1,3 +1,37 @@
+
+from langchain.document_loaders import PyPDFLoader
+from langchain.chains.question_answering import load_qa_chain
+from langchain.llms import HuggingFaceHub
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+hf_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
+def process_pdf_with_langchain(file_path):
+    loader = PyPDFLoader(file_path)
+    documents = loader.load()
+
+    llm = HuggingFaceHub(
+        repo_id="tiiuae/falcon-7b-instruct",  # ✅ Better than flan-t5-xl here
+        model_kwargs={"temperature": 0.3, "max_new_tokens": 1024},
+        huggingfacehub_api_token=hf_api_token
+    )
+
+    chain = load_qa_chain(llm, chain_type="stuff")  # works well with instruct models
+
+    question = (
+        "You are a resume analyzer. Review this resume and suggest changes to improve "
+        "chances of getting selected by top companies. Also provide a summary."
+    )
+
+    response = chain.run(input_documents=documents, question=question)
+    return response
+
+
+
+# /// other (optional )
 # from langchain.document_loaders import PyPDFLoader
 # from langchain.chains.question_answering import load_qa_chain
 # from langchain.llms import HuggingFaceHub
@@ -39,32 +73,3 @@
 #     file_path = "your_resume.pdf"
 #     result = process_pdf_with_langchain(file_path)
 #     print(result)
-from langchain.document_loaders import PyPDFLoader
-from langchain.chains.question_answering import load_qa_chain
-from langchain.llms import HuggingFaceHub
-from dotenv import load_dotenv
-import os
-
-# Load environment variables
-load_dotenv()
-hf_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-
-def process_pdf_with_langchain(file_path):
-    loader = PyPDFLoader(file_path)
-    documents = loader.load()
-
-    llm = HuggingFaceHub(
-        repo_id="tiiuae/falcon-7b-instruct",  # ✅ Better than flan-t5-xl here
-        model_kwargs={"temperature": 0.3, "max_new_tokens": 1024},
-        huggingfacehub_api_token=hf_api_token
-    )
-
-    chain = load_qa_chain(llm, chain_type="stuff")  # works well with instruct models
-
-    question = (
-        "You are a resume analyzer. Review this resume and suggest changes to improve "
-        "chances of getting selected by top companies. Also provide a summary."
-    )
-
-    response = chain.run(input_documents=documents, question=question)
-    return response
