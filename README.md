@@ -1,86 +1,124 @@
-# Resume Analyzer using LangChain & Hugging Face 🤖📄
+# AI Resume Analyzer 🤖📄
 
-This project is an AI-powered resume analysis tool built with **LangChain** and **Hugging Face Inference API**. It processes PDF resumes, analyzes their content, and provides:
+An intelligent resume analysis platform that leverages AI to provide detailed feedback and insights on resumes. The application uses advanced language models to analyze resumes and provide constructive suggestions for improvement.
 
-- 🔍 Constructive suggestions to improve the resume
-- 🧠 A concise summary of the candidate's profile
-- ✅ Feedback to increase chances of selection by top companies
+## 🌟 Features
 
-## 🔧 Tech Stack
+- 📄 PDF Resume Upload and Processing
+- 🤖 AI-Powered Resume Analysis
+- 📊 Detailed Feedback and Suggestions
+- 📱 Modern, Responsive UI
+- 🔒 Secure File Handling
+- 📈 Performance Metrics and Insights
 
-- 🧠 [LangChain](https://www.langchain.com/)
-- 🤗 [Hugging Face Hub](https://huggingface.co/)
-- 📄 PDF parsing via `PyPDFLoader`
-- 🐍 Python
+## 🛠️ Tech Stack
 
-## 🚀 Features
+### Backend
+- 🐍 Python 3.x
+- 🎯 Django  Framework 
+- 🧠 LangChain for AI Processing
+- 🤗 Hugging Face Models
+- 📊 SQLite Database
+- 🔄 RESTful API Architecture
 
-- Upload a PDF resume
-- Automatically processed by an LLM (e.g., Falcon-7B, Mistral, or Flan-T5)
-- Get instant feedback and summary
-- Easy to integrate into web or backend systems
+### Frontend
+- ⚛️ React 19
+- 🎨 TailwindCSS 4
+- 📄 React-PDF for PDF handling
+- 🚀 Vite for Build Tooling
+- 🔄 React Router for Navigation
+- 📦 Axios for API Communication
 
-## 📦 Setup
+### Development Tools
+- 🛠️ ESLint for Code Quality
+- 📦 npm for Package Management
+- 🔄 Git for Version Control
+- 🚀 Vite for Development Server
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/abhishekkamble12/Ai_resume_analyzer.git
-   cd Ai_resume_analyzer
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Set up environment variables:
-   ```bash
-   # Create a .env file and add your Hugging Face API token
-   HUGGINGFACE_API_TOKEN=your_token_here
-   ```
-
-## 🛠️ Usage
-
-1. Place your PDF resume in the `resumes` directory
-2. Run the analyzer:
-   ```bash
-   python main.py
-   ```
-3. View the analysis results in the console or output directory
-
-## 📝 Project Structure
+## 📋 Project Structure
 
 ```
 Ai_resume_analyzer/
-├── main.py              # Main application entry point
-├── requirements.txt     # Project dependencies
-├── .env                # Environment variables
-├── resumes/            # Directory for input resumes
-└── output/            # Directory for analysis results
+├── chaicode/                 # Backend Django Application
+│   ├── myai/                # AI Processing Module
+│   ├── myapp/               # Main Application Logic
+│   ├── chaicode/            # Project Configuration
+│   └── db.sqlite3           # Database
+├── myfrontend/              # React Frontend
+│   ├── src/                 # Source Code
+│   ├── public/              # Static Assets
+│   └── package.json         # Dependencies
+└── myvenv/                  # Python Virtual Environment
 ```
 
-## 🔑 API Keys
+## 🚀 Workflow
 
-This project requires a Hugging Face API token. You can get one by:
-1. Creating an account on [Hugging Face](https://huggingface.co/)
-2. Going to your profile settings
-3. Generating a new API token
+1. **Resume Upload**
+   - User uploads PDF resume through the React frontend
+   - File is securely transmitted to Django backend
+   - PDF is processed and converted to text
 
-## 🤝 Contributing
+2. **AI Analysis**
+   - Text is processed using LangChain
+   - Hugging Face models analyze the content
+   - Multiple aspects are evaluated:
+     - Skills and Experience
+     - Education and Qualifications
+     - Format and Structure
+     - Keywords and ATS Compatibility
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+3. **Feedback Generation**
+   - AI generates comprehensive feedback
+   - Suggestions for improvement are created
+   - Performance metrics are calculated
 
-## 📄 License
+4. **Results Display**
+   - Analysis results are sent back to frontend
+   - Interactive UI displays feedback
+   - User can view detailed suggestions
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🛠️ Setup Instructions
+
+1. **Backend Setup**
+   ```bash
+   cd chaicode
+   python -m venv myvenv
+   source myvenv/bin/activate  # On Windows: myvenv\Scripts\activate
+   pip install -r requirements.txt
+   python manage.py migrate
+   python manage.py runserver
+   ```
+
+2. **Frontend Setup**
+   ```bash
+   cd myfrontend
+   npm install
+   npm run dev
+   ```
+
+3. **Environment Variables**
+   Create a `.env` file in the backend directory:
+   ```
+   HUGGINGFACE_API_TOKEN=your_token_here
+   SECRET_KEY=your_django_secret_key
+   ```
+
+## 🔑 API Keys Required
+
+- Hugging Face API Token
+- Django Secret Key
 
 ## 👥 Author
 
 - **Abhishek Kamble**
   - GitHub: [@abhishekkamble12](https://github.com/abhishekkamble12)
 
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## 🙏 Acknowledgments
 
-- [LangChain](https://www.langchain.com/) for the amazing framework
-- [Hugging Face](https://huggingface.co/) for the powerful AI models
-- All contributors and users of this project
+- [LangChain](https://www.langchain.com/) for AI processing framework
+- [Hugging Face](https://huggingface.co/) for AI models
+- [Django](htt
