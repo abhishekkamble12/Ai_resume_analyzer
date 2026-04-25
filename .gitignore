@@ -1,0 +1,43 @@
+# Git Ignore for AI Resume Analyzer
+
+# Base / OS
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+
+# Python / Django
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv/
+myvenv/
+venv/
+ENV/
+db.sqlite3
+/media/
+/static/
+/staticfiles/
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Node / React
+myfrontend/node_modules/
+myfrontend/dist/
+myfrontend/dist-ssr/
+myfrontend/*.local
+myfrontend/.eslintcache
+myfrontend/.stylelintcache
+myfrontend/.vite/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+.project
+.pydevproject
+.settings/
